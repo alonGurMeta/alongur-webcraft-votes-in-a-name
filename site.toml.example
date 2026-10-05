@@ -1,0 +1,35 @@
+[site]
+name = "your-site-name"                       # Unique name (kebab-case)
+original_url = "https://example.com"           # Original site being replicated
+url = ""                                      # AWS URL is assigned after push; do not invent it
+description = "A brief description of your site"
+category = "webcraft-1.0"                     # Review taxonomy only; every category uses the 2.0 AWS contract
+
+[site.tech]
+stack = ["Next.js", "Tailwind"]               # Frameworks/tools used
+hosting = "aws"                               # Managed WebCraft deployment
+hosting_access_granted = true                 # Access is managed by the WebCraft platform
+
+[site.assets]
+images = []                                   # e.g. ["public/assets/hero.png"]
+videos = []                                   # e.g. ["public/assets/intro.mp4"]
+models_3d = []                                # e.g. ["public/assets/globe.glb"]
+svgs = []                                     # e.g. ["public/assets/logo.svg"]
+
+[site.prd]
+file = "PRD.md"
+walkthrough_video = ""   # Pixelcloud (pxl.cl) URL — required ML input, paired with PRD. Don't commit the file.
+
+[[screenshots]]
+route = "/"
+file = "screenshots/home-desktop.png"
+device = "desktop"                            # 1440x900
+
+[[screenshots]]
+route = "/"
+file = "screenshots/home-mobile.png"
+device = "mobile"                             # 390x844
+
+[task]
+format = "web_craft"
+workstream = "web_craft"

@@ -1,0 +1,47 @@
+# docker-compose.yml.example — copy to docker-compose.yml.
+#
+# Docker is the single substrate for every Web Craft app. WebCraft 2.0 accepts
+# exactly one service, `app-runner`. Merge front end, backend, workers, and local
+# persistence into this image/process tree; do not add database, cache, proxy, or
+# other sidecars. app.toml describes this application's lifecycle only. See
+# SETUP.md.
+
+services:
+  app-runner:
+    build:
+      context: .
+      dockerfile: environment/Dockerfile
+      args:
+        http_proxy: ${APP_PROXY:-}
+        https_proxy: ${APP_PROXY:-}
+        no_proxy: ${APP_NO_PROXY:-localhost,127.0.0.1}
+    working_dir: /workspace
+    init: true
+    command: ["bash", "-lc", "sleep infinity"]   # idles; verify.sh drives the lifecycle in
+    environment:
+      http_proxy: ${APP_PROXY:-}
+      https_proxy: ${APP_PROXY:-}
+      HTTP_PROXY: ${APP_PROXY:-}
+      HTTPS_PROXY: ${APP_PROXY:-}
+      no_proxy: ${APP_NO_PROXY:-localhost,127.0.0.1}
+      NO_PROXY: ${APP_NO_PROXY:-localhost,127.0.0.1}
+      NODE_ENV: development
+      # App env goes here. External managed dependencies may be configured by URL,
+      # but local dependencies must run inside this same container.
+    volumes:
+      - .:/workspace                               # bind-mount source (live edits)
+      # Keep deps + build cache CONTAINER-PRIVATE, or a host-compiled cache leaks
+      # in and corrupts the build (native deps differ mac↔linux; Next `.next` /
+      # Vite `.vite` are classic offenders). One named volume per such dir:
+      # setup.sh invalidates these on a lockfile change — a bump can otherwise
+      # leave stale entries that 404 at runtime (build still "succeeds").
+      - app_node_modules:/workspace/node_modules
+      - app_build_cache:/workspace/.next
+    # Publish the internal front-door port with NO host side → ephemeral host
+    # port, discovered by the harness (keeps parallel runs from colliding).
+    ports:
+      - "3000"
+
+volumes:
+  app_node_modules:
+  app_build_cache:

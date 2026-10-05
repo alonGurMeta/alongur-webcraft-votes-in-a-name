@@ -1,0 +1,26 @@
+[site]
+name = "alongur-webcraft-votes-in-a-name"
+original_url = "https://diagramchasing.fun/2024/votes-in-a-name"
+url = ""                                      # AWS URL is assigned after push; do not invent it
+description = "An interactive data-story replica about confusingly similar names in Indian elections"
+category = "webcraft-2.0"                     # Review taxonomy only; every category uses the 2.0 AWS contract
+
+[site.tech]
+stack = ["Vite", "Vanilla JavaScript", "CSS"]
+hosting = "aws"                               # Managed WebCraft deployment
+hosting_access_granted = true                 # Access is managed by the WebCraft platform
+
+[site.assets]
+images = ["public/assets/outside-1.CR7Dnvz8.webp", "public/assets/school-1.CftLUXgV.webp", "public/assets/rahul-1.G6UMmSJ3.webp", "public/assets/posters.BxzP8ep4.png", "public/assets/break-1.DJxeRFio.png", "public/assets/logo.CsOc2COw.png"]
+videos = []                                   # e.g. ["public/assets/intro.mp4"]
+models_3d = []                                # e.g. ["public/assets/globe.glb"]
+svgs = []                                     # e.g. ["public/assets/logo.svg"]
+
+[site.prd]
+file = "PRD.md"
+walkthrough_video = ""   # Pixelcloud (pxl.cl) URL — required ML input, paired with PRD. Don't commit the file.
+
+[task]
+format = "web_craft"
+workstream = "web_craft"
+track_assignment = "hatch-web-design"

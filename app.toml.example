@@ -1,0 +1,54 @@
+# app.toml — REQUIRED operational contract for AWS hosting. Copy this file to
+# `app.toml`; every field inside [app] remains optional.
+#
+# Docker is the substrate: the app runs as the sole `app-runner` Compose service.
+# You DECLARE commands here for that one application; this file cannot declare
+# containers, services, or sidecars.
+# Omit a field and it is inferred from package.json, then defaults (npm ci →
+# npm install / npm run dev / port 3000). Production start is narrower: Next.js
+# and Vite are inferred; every other stack must set [app.production].start.
+# Set fields when inference cannot guess your setup: custom single-container
+# stacks, seeding, or when the production serve command differs from dev.
+#
+# See SETUP.md for the full spec and resolution rules.
+
+[app]
+# The lifecycle. Point these at scripts/app/*.sh (the shape the app-runner drives)
+# or write the command inline — either works.
+# setup  = "./scripts/app/setup.sh"   # install deps / provision   (default: npm ci → npm install)
+# build  = "npm run build"            # produce a runnable build   (default: none — runs ONLY if declared)
+# seed   = "./scripts/app/seed.sh"    # load data/ into the store  (default: run data/seed.* if present)
+# start  = "./scripts/app/start.sh"   # serve for evaluation       (default: npm start → npm run dev; an inferred start is auto-bound to 0.0.0.0:port for vite/next/CRA/webpack/vue-cli)
+#
+# Profiles: `dev` is the default. `wcvm up --prod` (or `--profile <name>`) selects an
+# [app.<profile>] section whose keys OVERRIDE base [app] (shared keys like port/health/
+# setup stay declared once). Example of a production build + serve:
+#
+#   [app.production]
+#   # Hosted Fargate defaults to small-v1 (0.25 vCPU, 512 MiB).
+#   # Use standard-v1 for 0.5 vCPU and 1024 MiB.
+#   fargate_profile = "standard-v1"
+#   build = "npm run build"
+#   start = "npm start -- --host 0.0.0.0"    # serve the production build
+#
+# Next/Vite repos get a production profile INFERRED for free (build + `next start` /
+# `vite preview`); any other stack must declare [app.production] or `--prod` ERRORS
+# (dev is never silently served). A profile's start may also branch on the WEBCRAFT_PROFILE
+# env the harness forwards into the container.
+#
+# Static output (webpack/plain files)? Serve it with the bundled dependency-free server:
+# scripts/app/package.json keeps this CommonJS helper compatible with ESM applications.
+#   [app.production]
+#   build = "npm run build"
+#   start = "node scripts/app/serve-static.js --dir . --port 3000"   # add --spa for client routing
+
+# test   = "npm test"                 # run the test suite         (default: npm test if it exists)
+
+# port   = 3000                       # CONTAINER-INTERNAL front-door port (default: 3000; Fargate maps privileged ports to 8080)
+# health = "/"                        # readiness probe path on the front door (default: GET / on port)
+
+# Optional: expose your HTTP API as a deterministic drive/assert surface (same
+# process, same port) so harnesses hit the API instead of scraping the UI.
+# [app.api]
+# base = "/api"
+# spec = "openapi.json"               # path in repo or a URL

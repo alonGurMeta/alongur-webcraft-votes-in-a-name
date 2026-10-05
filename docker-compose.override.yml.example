@@ -1,0 +1,25 @@
+# docker-compose.override.yml.example — LOCAL DEVSERVER ONLY.
+#
+# Copy to docker-compose.override.yml to use it. Never commit that filename: compose AUTO-LOADS
+# it, so a committed override would silently apply to every run, including the eval VM.
+#
+# Why: on a locked-down devserver the forward proxy is IPv6-only AND x509-gated, so containers
+# cannot use it directly — a host-side relay (wcvm-relay) lends them the host's identity. Reaching
+# that relay needs a namespace that can talk to the host, which the default rootless bridge cannot.
+# Only the app service needs egress (it installs dependencies), so only it moves.
+#
+# Start the relay first:  wcvm-relay &
+services:
+  app-runner:
+    build:
+      network: host                 # a build runs on the host network: relay is 127.0.0.1
+    network_mode: "slirp4netns:enable_ipv6=true,allow_host_loopback=true"
+    environment:
+      # Set the real proxy vars, not APP_PROXY: the base compose maps ${APP_PROXY} at compose
+      # time, which carries the BUILD value. Inside slirp the host is 10.0.2.2.
+      http_proxy: "http://10.0.2.2:18080"
+      https_proxy: "http://10.0.2.2:18080"
+      HTTP_PROXY: "http://10.0.2.2:18080"
+      HTTPS_PROXY: "http://10.0.2.2:18080"
+      no_proxy: "localhost,127.0.0.1,10.0.2.2"
+      NO_PROXY: "localhost,127.0.0.1,10.0.2.2"

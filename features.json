@@ -1,0 +1,10 @@
+{
+  "site": "alongur-webcraft-votes-in-a-name",
+  "rubrics": [
+    { "id": 1, "criterion": "The opening journey uses a sticky full-viewport illustrated scene whose artwork and story card change as each narrative step crosses the viewport.", "type": "CUJ", "priority": "must-have" },
+    { "id": 2, "criterion": "The masthead reproduces the coral and deep-red nested title card, Devanagari overline, oversized title, logo, and editorial byline.", "type": "design", "priority": "must-have" },
+    { "id": 3, "criterion": "The name comparison lab accepts two editable names and immediately recomputes a visible bigram similarity percentage and matching letter pairs.", "type": "CUJ", "priority": "must-have" },
+    { "id": 4, "criterion": "The article presents the original hand-drawn election artwork, warm paper palette, compact editorial typography, bold section headings, and scroll reveal motion responsively.", "type": "design", "priority": "must-have" },
+    { "id": 5, "criterion": "The election-impact ending includes a highlighted 28-election statistic and a horizontally usable responsive table of close results, margins, namesakes, and probabilities.", "type": "CUJ", "priority": "must-have" }
+  ]
+}
