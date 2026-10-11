@@ -6,12 +6,12 @@ description = "An interactive data-story replica about confusingly similar names
 category = "webcraft-2.0"                     # Review taxonomy only; every category uses the 2.0 AWS contract
 
 [site.tech]
-stack = ["Vite", "Vanilla JavaScript", "CSS"]
+stack = ["React", "Vite", "D3", "Canvas", "CSS"]
 hosting = "aws"                               # Managed WebCraft deployment
 hosting_access_granted = true                 # Access is managed by the WebCraft platform
 
 [site.assets]
-images = ["public/assets/outside-1.CR7Dnvz8.webp", "public/assets/school-1.CftLUXgV.webp", "public/assets/rahul-1.G6UMmSJ3.webp", "public/assets/posters.BxzP8ep4.png", "public/assets/break-1.DJxeRFio.png", "public/assets/logo.CsOc2COw.png"]
+images = ["public/assets/outside-1.CR7Dnvz8.webp", "public/assets/school-1.CftLUXgV.webp", "public/assets/rahul-1.G6UMmSJ3.webp", "public/assets/posters.BxzP8ep4.png", "public/assets/break-1.DJxeRFio.png", "public/assets/logo.CsOc2COw.png", "public/assets/face-gen/face.png", "public/assets/reference/chandhu-sprites.png"]
 videos = []                                   # e.g. ["public/assets/intro.mp4"]
 models_3d = []                                # e.g. ["public/assets/globe.glb"]
 svgs = []                                     # e.g. ["public/assets/logo.svg"]

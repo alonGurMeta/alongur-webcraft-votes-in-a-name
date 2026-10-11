@@ -1,0 +1,124 @@
+@keyframes cloud-cross {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100vw);
+  }
+}
+.cloud {
+  animation-name: cloud-cross;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.cloud-one {
+  left: -190px;
+  top: 2%;
+  width: min(190px, 50vw);
+  animation-duration: 120s;
+}
+.cloud-two {
+  left: -180px;
+  right: auto;
+  top: 4%;
+  width: min(180px, 50vw);
+  animation-duration: 284s;
+  animation-delay: -90s;
+}
+.cloud-three {
+  left: -60px;
+  top: 7%;
+  width: min(16vw, 60px);
+  animation-duration: 109s;
+  animation-delay: -48s;
+}
+@media (min-width: 32rem) {
+  html {
+    font-size: 16px;
+  }
+  .prose h2,
+  .lab h2 {
+    font-size: 2.25rem;
+  }
+  h4 {
+    font-size: 1.375rem;
+  }
+}
+@media (min-width: 48rem) {
+  html {
+    font-size: 18px;
+  }
+  .prose h2,
+  .lab h2 {
+    font-size: 2.5rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 680px) {
+  .article {
+    padding-inline: 1rem;
+  }
+  .scene-image {
+    width: 190%;
+    object-position: center;
+  }
+  .story-step p {
+    box-shadow:
+      inset 0 -10px #3e2f7f1f,
+      0 5px #1617369e;
+  }
+  .score-row {
+    min-width: 580px;
+  }
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+  .inputs > span {
+    padding: 0;
+  }
+  .lab-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .lab {
+    margin-inline: 0.25rem;
+  }
+  .title-frame h1 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 768px) {
+  .desktop-state-grid {
+    display: none;
+  }
+  .mobile-state-grid {
+    display: block;
+    width: min(335px, 100%);
+    margin: 0 auto 1rem;
+  }
+  .cloud-one {
+    top: 10%;
+    animation-duration: 19s;
+  }
+  .cloud-two {
+    top: 12%;
+    animation-duration: 44.5s;
+  }
+  .cloud-three {
+    top: 15%;
+    animation-duration: 29s;
+  }
+}

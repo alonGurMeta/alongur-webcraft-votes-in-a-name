@@ -1,0 +1,248 @@
+.pool-viz {
+  max-width: 720px;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+.score-table {
+  max-width: 760px;
+  margin: 3rem auto 3rem;
+  border: 1px solid #c9c4b6;
+  background: #fff;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) repeat(4, 1fr);
+  border-bottom: 1px solid #dedbd2;
+  align-items: stretch;
+}
+.score-row > * {
+  padding: 0.65rem;
+  text-align: center;
+}
+.score-row > strong {
+  text-align: left;
+  font-size: 0.85rem;
+}
+.score-row small {
+  display: block;
+  color: #777;
+  font-weight: 400;
+}
+.score-head {
+  background: #26241f;
+  color: white;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.score-cell {
+  background: color-mix(in srgb, #e04b2f calc(var(--p) * 1%), #fff);
+  font-weight: 750;
+}
+.score-cell.best {
+  outline: 2px solid #222;
+  outline-offset: -2px;
+}
+.barcode {
+  max-width: 900px;
+  margin: 3rem auto 7rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #d2cdc1;
+}
+.barcode canvas {
+  width: 100%;
+  height: 520px;
+  display: block;
+}
+.barcode-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.7rem;
+}
+.barcode-legend span:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.35rem;
+  background: #bd4e32;
+}
+.barcode-legend span:nth-child(2):before {
+  background: #dc994a;
+}
+.barcode-legend span:nth-child(3):before {
+  background: #315d59;
+}
+.lab {
+  position: relative;
+  max-width: 800px;
+  margin: 7rem auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  background: #e67050;
+  border: 2px solid #222;
+  box-shadow: 9px 9px 0 #222;
+  text-align: center;
+}
+.lab h2 {
+  margin: 0.3rem 0;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.sample-button {
+  border: 1px solid #222;
+  background: #fff3d6;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+}
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: end;
+  margin: 2rem 0;
+}
+.inputs label {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 750;
+}
+.inputs input {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  border: 2px solid #222;
+  background: #fff9e9;
+  padding: 0.7rem;
+}
+.inputs > span {
+  padding-bottom: 0.7rem;
+  font-style: italic;
+}
+.face-canvas {
+  flex: 0 0 auto;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 430px;
+  margin: 1.5rem auto;
+  gap: 0.4rem;
+}
+.metrics span {
+  display: flex;
+  flex-direction: column;
+  background: #fff3d6;
+  padding: 0.55rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+.metrics b {
+  font-size: 1rem;
+}
+.break-art {
+  max-width: 28rem;
+  margin: 1rem auto;
+}
+.table-section {
+  max-width: 1050px;
+  margin: 4rem auto;
+}
+.table-wrap {
+  overflow: auto;
+  border: 1px solid #999;
+  background: #fff;
+  margin-top: 2rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+th,
+td {
+  padding: 0.75rem 0.65rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+th {
+  background: #f0eee8;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.margin {
+  background: #e35b38;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+}
+.footer {
+  padding-top: 4rem;
+  text-align: left;
+}
+.footer hr {
+  border: 0;
+  border-top: 2px solid #222;
+  margin: 5rem 0 2rem;
+}
+.footer h2 {
+  margin-top: 0;
+}
+.award {
+  width: 130px;
+  margin: 3rem 0;
+}
+.bottom-logo {
+  margin: 0.5rem auto;
+  width: 150px;
+}
+.footer > .presents,
+.bottom-link {
+  display: block;
+  text-align: center;
+}
+.bibliography {
+  width: 100%;
+  margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+.bibliography h2 {
+  font-size: 1.5rem;
+}
+.reference-item {
+  margin-bottom: 1rem;
+  font-size: 0.78rem !important;
+  color: #514d45;
+}
+.reference-item a {
+  color: inherit;
+  text-decoration: none;
+}
+.reference-item a:hover {
+  text-decoration: underline;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s,
+    transform 0.8s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
